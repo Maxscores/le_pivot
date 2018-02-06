@@ -1,4 +1,5 @@
 # The Pivot - Base Project
+[![Build Status](https://travis-ci.org/Maxscores/le_pivot.svg?branch=master)](https://travis-ci.org/Maxscores/le_pivot)
 
 The following Rails app is used as the base project for [The Pivot](http://backend.turing.io/module3/projects/the_pivot).
 

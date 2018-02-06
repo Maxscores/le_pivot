@@ -11,9 +11,11 @@ RSpec.describe "As a visitor I can login" do
 		within(".action") do
 			click_on("Login")
 		end
+
+    expect(current_path).to eq(dashboard_index_path)
+
 		click_on 'Logout'
 		expect(page).to have_content("Login")
-
 	end
 
 end

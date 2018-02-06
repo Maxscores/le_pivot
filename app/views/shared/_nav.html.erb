@@ -1,5 +1,12 @@
-<ul class="nav">
-  <li class="logo"><%= link_to  "LittleShoppe", root_path %></li>
+  <header id="header">
+    <div class="container-fluid">
+      <div id="logo" class="pull-left">
+        <h1><a class="title">Found Sound</a></h1>
+      </div>
+      <div class = "record"><%= image_tag('record.png')%></div>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class ="home" ><a><i class="fas fa-home fa-2x"></i></a></li>
 
   <% if current_user.nil? %>
     <li class="nav-item">
@@ -42,3 +49,10 @@
 
 </ul>
 
+
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>

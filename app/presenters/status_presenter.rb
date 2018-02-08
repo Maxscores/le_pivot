@@ -1,5 +1,6 @@
 class StatusPresenter
-
+  attr_reader :status
+  
   def initialize(status)
     @status = status
   end
@@ -23,7 +24,4 @@ class StatusPresenter
         ["Suspended", "Active", "Pending"]
     end
   end
-  private
-
-  attr_reader :status
 end

@@ -2,8 +2,7 @@ class Admin::StoresController < ApplicationController
 before_action :require_admin
 
   def index
-    @stores = StatusPresenter.new(params['tab']).stores
-    @tab= StatusPresenter.new(params['tab']).tab
+    @presenter = StatusPresenter.new(params['tab'])
   end
 
   def update

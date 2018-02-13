@@ -4,8 +4,9 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+gem 'stripe-ruby-mock', '~> 2.5.2', :require => 'stripe_mock'
 
-
+gem 'stripe'
 gem 'rails', '~> 5.1.3'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'

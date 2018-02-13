@@ -16,6 +16,7 @@ class Permission
     elsif user.registered_user?
       # return registered_user_permissions
       # Using the private method for registered_user_permissions oddly causes 3 tests to fail?
+      return true if controller == "store_orders" && action == "update"
       return true if controller == "main" && action == "index"
       return true if controller == "sessions" && action.in?(%w(new create destroy))
       return true if controller == "users" && action.in?(%w(new create edit update))
@@ -25,7 +26,7 @@ class Permission
       return true if controller == "items" && action.in?(%w(show))
       return true if controller == "sessions" && action.in?(%w(new create destroy))
       return true if controller == "users" && action.in?(%w(update new create destroy))
-      return true if controller == "orders" && action.in?(%w(index show create))
+      return true if controller == "orders" && action.in?(%w(index show new create))
       return true if controller == "dashboard" && action.in?(%w(index))
     end
     return base_permissions
@@ -52,6 +53,8 @@ class Permission
       return true if controller == "items" && action.in?(%w(index show edit update new create))
       return true if controller == "auth" && action.in?(%w(twitter))
       return true if controller == "twitter" && action.in?(%w(edit update create destroy))
+      return true if controller == "cart" && action.in?(%w(index create edit destroy update))
+
     end
 
     def store_admin_permissions
@@ -75,6 +78,7 @@ class Permission
     def store_manager_permissions
       return true if controller == "store_orders"&& action.in?(%w(show create edit update destroy))
 
+      return true if controller == "store_orders" && action == "update"
       return true if controller == "admin/items" && action.in?(%w(index new create edit update destroy))
       return true if controller == "store/orders" && action.in?(%w(index new create edit update destroy))
       return true if controller == "main" && action == "index"
@@ -85,7 +89,7 @@ class Permission
       return true if controller == "dashboard" && action.in?(%w(index))
       return true if controller == "stores" && action.in?(%w(index new create show ))
       return true if controller == "items" && action.in?(%w(show))
-      return true if controller == "orders" && action.in?(%w(index create show update))
+      return true if controller == "orders" && action.in?(%w(index create new show update))
       return true if controller == "auth" && action.in?(%w(twitter))
       return true if controller == "twitter" && action.in?(%w(create))
     end
@@ -105,6 +109,8 @@ class Permission
     # end
 
     def base_permissions
+      return true if controller == "store_orders" && action == "update"
+      return true if controller == "charges" && action.in?(%w(new create))
       return true if controller == "api/v1/search" && action.in?(%w(index))
       return true if controller == "developer" && action.in?(%w(show create))
       return true if controller == "main" && action == "index"

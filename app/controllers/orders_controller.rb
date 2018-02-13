@@ -39,7 +39,6 @@ class OrdersController < ApplicationController
         :description => 'Rails Stripe customer',
         :currency    => 'usd'
       )
-      binding.pry
       OrderCreator.new(order).create_store_order
       @cart.destroy
       flash[:success] = "Order was successfully placed"

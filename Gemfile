@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'stripe'
 gem 'rails', '~> 5.1.3'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
@@ -32,6 +32,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-pride', '~> 3.2', '>= 3.2.1'
   gem 'pry-rails'
+ gem 'poltergeist'
+
   gem 'capybara'
   gem "factory_bot_rails"
   gem 'database_cleaner'
@@ -43,6 +45,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'coveralls', require: false
   gem 'travis'
+  gem 'selenium-webdriver'
 end
 
 group :development do

@@ -43,9 +43,7 @@ RSpec.feature "Adding items to the cart" do
 
       expect(page).to have_content(item.title)
       expect(page).to have_content("2")
-      within '.total' do
-        expect(page).to have_content "$20.00"
-      end
+        expect(page).to have_content "$20.0"
     end
   end
 end

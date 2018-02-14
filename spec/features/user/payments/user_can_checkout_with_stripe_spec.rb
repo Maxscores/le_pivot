@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "User can place an order" do
-
+RSpec.feature "User can checkout with stripe" do
   it "and see the message 'order was successfully placed'" do
-      VCR.use_cassette("stripe") do
 
     user = create(:user, first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "dummy address")
 
@@ -27,11 +25,10 @@ RSpec.feature "User can place an order" do
     end
 
     click_on "Cart"
+    #
+    click_on 'Checkout'
 
-    expect(page).to have_link("Checkout")
-
-    click_on "Checkout"
-    expect(current_path).to eq('/orders/new')
-  end
+    expect(current_path).to eq(new_order_path)
+    expect(page).to have_content("$10.00")
   end
 end

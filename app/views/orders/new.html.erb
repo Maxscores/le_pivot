@@ -9,6 +9,7 @@
             <p><%= flash[:error] %></p>
           </div>
         <% end %>
+        <%= hidden_field_tag :total , params[:total] %>
           <span>Total: <%= @total %></span>
       </article>
 
@@ -16,7 +17,7 @@
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-description="You Completed Order"
-              data-amount="<%= @total%>"
+              data-amount="<%= @total %>"
               data-label ="Checkout"
               data-locale="auto"></script>
       </div>

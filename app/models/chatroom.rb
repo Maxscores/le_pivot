@@ -10,7 +10,7 @@ class Chatroom < ApplicationRecord
   end
 
   def send_greeting
-    ChatMessage.create(user: User.find(1), chatroom: self, body: greeting)
+    ChatMessage.create(user: User.where(role: "admin").sample, chatroom: self, body: greeting)
   end
 
   def greeting

@@ -33,8 +33,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-pride', '~> 3.2', '>= 3.2.1'
   gem 'pry-rails'
- gem 'poltergeist'
-
+  gem 'poltergeist'
   gem 'capybara'
   gem "factory_bot_rails"
   gem 'database_cleaner'
@@ -47,6 +46,7 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'travis'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do

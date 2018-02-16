@@ -37,4 +37,18 @@ describe "Logged in User sees a chat window" do
       expect(page).to have_content("Frank: How can I help?")
     end
   end
+
+  xit "has a chatroom after login", js: true do
+    create(:admin)
+    user = create(:user, first_name: "Max")
+
+    login_user(user.email, user.password)
+
+    expect(page).to_not have_content("Max: I need help")
+    click_on "Chat"
+
+    find_field("chat_message[body]").send_keys("I need help", :enter)
+
+    expect(page).to have_content("Max: I need help")
+  end
 end

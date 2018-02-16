@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     flash[:notice] = "Logged in as #{user.first_name} #{user.last_name}"
     session[:user_id] = user.id
-    cookies[:user_id] = @user.id
+    cookies[:user_id] = user.id
     redirect_to dashboard_index_path
   end
 

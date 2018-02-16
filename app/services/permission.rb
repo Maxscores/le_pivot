@@ -30,8 +30,11 @@ class Permission
       return true if controller == "dashboard" && action.in?(%w(index))
       return true if controller == "departments/departments" && action.in?(%w(show))
       return true if controller == "chat" && action.in?(%w(create))
+      return true if controller == "admin/chat" && action.in?(%w(create))
+
       return true if controller == "shipping" && action.in?(%w(new index show))
       return true if controller == "api/v1/search" && action.in?(%w(index))
+      return true if controller == "api/v1/chatroom" && action.in?(%w(index))
       return true if controller == "developer" && action.in?(%w(show create))
 
     end
@@ -92,11 +95,11 @@ class Permission
       return true if controller == "chat" && action.in?(%w(create))
       return true if controller == "api/v1/search" && action.in?(%w(index))
       return true if controller == "developer" && action.in?(%w(show create))
+      return true if controller == "admin/chat" && action.in?(%w(create))
 
     end
 
     def store_manager_permissions
-<<<<<<< HEAD
       return true if controller == "developer" && action.in?(%w(show create))
       return true if controller == "store_orders"&& action.in?(%w(show create edit update destroy))
       return true if controller == "api/v1/search" && action.in?(%w(index))
@@ -120,6 +123,7 @@ class Permission
       return true if controller == "shipping" && action.in?(%w(new index show))
       return true if controller == "chat" && action.in?(%w(create))
       return true if controller == "api/v1/search" && action.in?(%w(index))
+      return true if controller == "admin/chat" && action.in?(%w(create))
 
 
     end

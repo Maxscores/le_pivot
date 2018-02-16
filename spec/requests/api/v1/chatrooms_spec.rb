@@ -12,7 +12,7 @@ describe "As a user with an API key" do
 
       search_response = JSON.parse(response.body)
 
-      expected_chatrooms_response = [{"id" => 1}, {"id" => 2}]
+      expected_chatrooms_response = [{"id" => chatroom_1.id}, {"id" => chatroom_2.id}]
       
       expect(search_response).to eq(expected_chatrooms_response)
     end

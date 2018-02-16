@@ -28,7 +28,14 @@ VCR.configure do |config|
   config.filter_sensitive_data('<cloudinary_secret>') {ENV['cloudinary_secret']}
   config.filter_sensitive_data('<CLOUDINARY_URL>') {ENV['CLOUDINARY_URL']}
   config.filter_sensitive_data('easypost_key') {ENV['easypost_key']}
+  config.allow_http_connections_when_no_cassette = true
 end
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.javascript_driver = :selenium_chrome
+
 
 
 RSpec.configure do |config|

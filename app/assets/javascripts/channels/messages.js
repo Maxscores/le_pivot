@@ -1,3 +1,9 @@
+// App.messages = App.cable.subscriptions.create("MessagesChannel", {
+//   received: function(data) {
+//     $('#messages').removeClass('hidden')
+//     return $("[data-chatroom='" + data.chatroom_id + "']").append(data.message);
+//   }
+// });
 
 // this might not work due to turbolinks
 $(document).ready(function() {
@@ -19,6 +25,9 @@ function setupChatroomChannels() {
             var payload = JSON.parse(data.message)
             $("#messages").append(payload["user"] + ": " + payload["message"] + "<br>");
             $("#messages").scrollTop($('#messages')[0].scrollHeight);
+          },
+          setChatroomId: function(chatroomId) {
+            this.chatroomId = chatroomId
           }
         });
       })
@@ -31,6 +40,7 @@ function submitNewMessage() {
     if (event.keyCode === 13) {
         var msg = event.target.value
         var chatroomId = $("#chat_message_chatroom_id").val();
+        App['room' + chatroomId].setChatroomId(chatroomId)
         App['room' + chatroomId].send({message: msg})
         $('[data-textarea="message"]').val("")
         return false;

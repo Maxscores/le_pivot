@@ -43,11 +43,7 @@ $(document).ready(function() {
     $('.chat-window').slideToggle()
     $("#messages").scrollTop($('#messages')[0].scrollHeight);
   });
-
-})
-
-$('document').ready(function() {
   setTimeout(function() {
     $('.alert').slideDown();
   }, 3000);
-});
+})

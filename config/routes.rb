@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    namespace :v1 do
+      get 'chatroom/index'
+    end
+  end
+
   mount ActionCable.server => '/cable'
   root :to => 'main#index'
 
@@ -54,6 +60,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/search', to: 'search#index'
+      get '/chatrooms', to: 'chatroom#index'
     end
   end
 

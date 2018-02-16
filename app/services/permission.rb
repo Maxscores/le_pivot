@@ -134,6 +134,7 @@ class Permission
     def base_permissions
       return true if controller == "store_orders" && action == "update"
       return true if controller == "api/v1/search" && action.in?(%w(index))
+      return true if controller == "api/v1/chatrooms" && action.in?(%w(index))
       return true if controller == "developer" && action.in?(%w(show create))
       return true if controller == "main" && action == "index"
       return true if controller == "sessions" && action.in?(%w(new create))

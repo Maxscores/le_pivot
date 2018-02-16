@@ -42,6 +42,8 @@ class Permission
     attr_reader :user, :controller, :action
 
     def platform_admin_permissions
+      return true if controller == "api/v1/search" && action.in?(%w(index))
+      return true if controller == "api/v1/chatroom" && action.in?(%w(index))
       return true if controller == "store_orders"&& action.in?(%w(show create edit update destroy))
       return true if controller == "admin/dashboard" && action == "index"
       return true if controller == "admin/analytics" && action == "index"
@@ -68,6 +70,8 @@ class Permission
     end
 
     def store_admin_permissions
+      return true if controller == "api/v1/search" && action.in?(%w(index))
+      return true if controller == "api/v1/chatroom" && action.in?(%w(index))
       return true if controller == "store_orders"&& action.in?(%w(show create edit update destroy))
       return true if controller == "stores/employees" && action == "update"
       return true if controller == "admin/items" && action.in?(%w(index new create edit update destroy))
@@ -92,9 +96,12 @@ class Permission
     end
 
     def store_manager_permissions
+<<<<<<< HEAD
       return true if controller == "developer" && action.in?(%w(show create))
-
       return true if controller == "store_orders"&& action.in?(%w(show create edit update destroy))
+      return true if controller == "api/v1/search" && action.in?(%w(index))
+      return true if controller == "api/v1/chatroom" && action.in?(%w(index))
+
       return true if controller == "store_orders" && action == "update"
       return true if controller == "admin/items" && action.in?(%w(index new create edit update destroy))
       return true if controller == "store/orders" && action.in?(%w(index new create edit update destroy))
@@ -134,7 +141,7 @@ class Permission
     def base_permissions
       return true if controller == "store_orders" && action == "update"
       return true if controller == "api/v1/search" && action.in?(%w(index))
-      return true if controller == "api/v1/chatrooms" && action.in?(%w(index))
+      return true if controller == "api/v1/chatroom" && action.in?(%w(index))
       return true if controller == "developer" && action.in?(%w(show create))
       return true if controller == "main" && action == "index"
       return true if controller == "sessions" && action.in?(%w(new create))
